@@ -1,149 +1,141 @@
-import React, { useCallback, useState } from "react";
-import { PieChart, Pie, Sector } from "recharts";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+import React from "react";
+import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts";
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
-const data = [
-  { name: "76 %", value: 70 },
-  { name: "24 %", value: 24 }
-];
+const data = [{ name: "L1", value: 76 }];
 
-const renderActiveShape = (props) => {
-  const RADIAN = Math.PI / 180;
-  const {
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    startAngle,
-    endAngle,
-    fill,
-    payload,
-    percent,
-    value
-  } = props;
-  const sin = Math.sin(-RADIAN * midAngle);
-  const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 10) * cos;
-  const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  const ey = my;
-  const textAnchor = cos >= 0 ? "start" : "end";
-
-  return (
-    <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-        {payload.name}
-      </text>
-      <Sector
-        cx={cx}
-        cy={cy}
-        innerRadius={innerRadius}
-        outerRadius={outerRadius}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        fill={fill}
-      />
-      <Sector
-        cx={cx}
-        cy={cy}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        innerRadius={outerRadius + 6}
-        outerRadius={outerRadius + 10}
-        fill={fill}
-      />
-      <path
-        d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
-        stroke={fill}
-        fill="none"
-      />
-      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text
-        x={ex + (cos >= 0 ? 1 : -1) * 12}
-        y={ey}
-        textAnchor={textAnchor}
-        fill="#147AD6"
-      >{`PV ${value}`}</text>
-      <text
-        x={ex + (cos >= 0 ? 1 : -1) * 12}
-        y={ey}
-        dy={18}
-        textAnchor={textAnchor}
-        fill="#999"
-      >
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
-      </text>
-    </g>
-  );
-};
+const circleSize = 200;
 
 export default function Circle() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const onPieEnter = useCallback(
-    (_, index) => {
-      setActiveIndex(index);
-    },
-    [setActiveIndex]
-  );
-
   return (
     <CarouselProvider
-    naturalSlideWidth={100}
-    naturalSlideHeight={120}
-    totalSlides={3}
-   >
+      naturalSlideWidth={100}
+      naturalSlideHeight={120}
+      totalSlides={3}
+    >
+      <Slider>
+        <Slide index={0}>
+          <RadialBarChart
+            width={circleSize}
+            height={circleSize}
+            cx={circleSize / 2}
+            cy={circleSize / 2}
+            innerRadius={50}
+            outerRadius={80}
+            barSize={4}
+            data={data}
+            startAngle={90}
+            endAngle={-270}
+          >
+            <PolarAngleAxis
+              type="number"
+              domain={[0, 100]}
+              angleAxisId={0}
+              tick={false}
+            />
+            <RadialBar
+              background
+              clockWise
+              dataKey="value"
+              cornerRadius={circleSize / 2}
+              fill="#147AD6"
+            />
+            <text
+              x={circleSize / 2}
+              y={circleSize / 2}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="progress-label"
+            >
+              76 %
+            </text>
+          </RadialBarChart>
+        </Slide>
+        <Slide index={1}>  <RadialBarChart
+            width={circleSize}
+            height={circleSize}
+            cx={circleSize / 2}
+            cy={circleSize / 2}
+            innerRadius={50}
+            outerRadius={80}
+            barSize={4}
+            data={data}
+            startAngle={90}
+            endAngle={-270}
+          >
+            <PolarAngleAxis
+              type="number"
+              domain={[0, 100]}
+              angleAxisId={0}
+              tick={false}
+            />
+            <RadialBar
+              background
+              clockWise
+              dataKey="value"
+              cornerRadius={circleSize / 2}
+              fill="#147AD6"
+            />
+            <text
+              x={circleSize / 2}
+              y={circleSize / 2}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="progress-label"
+            >
+              56 %
+            </text>
+          </RadialBarChart></Slide>
+        <Slide index={2}>  <RadialBarChart
+            width={circleSize}
+            height={circleSize}
+            cx={circleSize / 2}
+            cy={circleSize / 2}
+            innerRadius={50}
+            outerRadius={80}
+            barSize={4}
+            data={data}
+            startAngle={90}
+            endAngle={-270}
+          >
+            <PolarAngleAxis
+              type="number"
+              domain={[0, 100]}
+              angleAxisId={0}
+              tick={false}
+            />
+            <RadialBar
+              background
+              clockWise
+              dataKey="value"
+              cornerRadius={circleSize / 2}
+              fill="#147AD6"
+            />
+            <text
+              x={circleSize / 2}
+              y={circleSize / 2}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="progress-label"
+            >
+              56 %
+            </text>
+          </RadialBarChart></Slide>
+      </Slider>
 
-   <Slider>
-     <Slide index={0}>      <PieChart width={200} height={200}>
-        <Pie
-          activeIndex={activeIndex}
-          activeShape={renderActiveShape}
-          data={data}
-          cx={100}
-          cy={100}
-          innerRadius={30}
-          outerRadius={40}
-          fill="#147AD6"
-          dataKey="value"
-          onMouseEnter={onPieEnter}
-        />
-      </PieChart></Slide>
-     <Slide index={1}>      <PieChart width={200} height={200}>
-        <Pie
-          activeIndex={activeIndex}
-          activeShape={renderActiveShape}
-          data={data}
-          cx={100}
-          cy={100}
-          innerRadius={30}
-          outerRadius={40}
-          fill="#147AD6"
-          dataKey="value"
-          onMouseEnter={onPieEnter}
-        />
-      </PieChart></Slide>
-     <Slide index={2}>      <PieChart width={200} height={200}>
-        <Pie
-          activeIndex={activeIndex}
-          activeShape={renderActiveShape}
-          data={data}
-          cx={100}
-          cy={100}
-          innerRadius={30}
-          outerRadius={40}
-          fill="#147AD6"
-          dataKey="value"
-          onMouseEnter={onPieEnter}
-        />
-      </PieChart></Slide>
-   </Slider>
-
-   <ButtonBack><span className="text-[#147AD6]">•</span></ButtonBack>
-   <ButtonNext><span className="text-[#7388A95A]">•</span></ButtonNext>
-  </CarouselProvider>
+      <ButtonBack>
+        <span className="text-[#147AD6]">•</span>
+      </ButtonBack>
+      <ButtonNext>
+        <span className="text-[#7388A95A]">•</span>
+      </ButtonNext>
+    </CarouselProvider>
   );
 }

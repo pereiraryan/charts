@@ -87,8 +87,8 @@ export default function Lines() {
       />
     </AreaChart>
     <div className="center text-[16px] text-[#7C828A]">
-      <span className="text-[#79D2DE]">•</span>Point 01
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span className="text-[#147AD6]">•</span>Point 02
+      <span className="text-[#147AD6]">•</span>Point 01
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span className="text-[#79D2DE]">•</span>Point 02
     </div>
     </>
   );
