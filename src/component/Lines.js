@@ -55,6 +55,7 @@ const data = [
 
 export default function Lines() {
   return (
+    <>
     <AreaChart
       width={250}
       height={100}
@@ -85,5 +86,10 @@ export default function Lines() {
         fill="#EC6666"
       />
     </AreaChart>
+    <div className="center text-[16px] text-[#7C828A]">
+      <span className="text-[#EC6666]">•</span>Point 01
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span className="text-[#147AD6]">•</span>Point 02
+    </div>
+    </>
   );
 }

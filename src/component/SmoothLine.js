@@ -5,56 +5,57 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip
+  Tooltip,
 } from "recharts";
 
 const data = [
   {
     name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
+
+    pv: 240,
+    amt: 240,
   },
   {
     name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
+
+    pv: 139,
+    amt: 220,
   },
   {
     name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
+
+    pv: 600,
+    amt: 290,
   },
   {
     name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
+
+    pv: 300,
+    amt: 200,
   },
   {
     name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
+
+    pv: 480,
+    amt: 281,
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+
+    pv: 380,
+    amt: 250,
   },
   {
     name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
+
+    pv: 430,
+    amt: 210,
+  },
 ];
 
-export default function SmoothLine() {
+export default function Lines() {
   return (
+    <>
     <AreaChart
       width={250}
       height={100}
@@ -63,7 +64,7 @@ export default function SmoothLine() {
         top: 10,
         right: 30,
         left: 0,
-        bottom: 0
+        bottom: 0,
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
@@ -72,25 +73,23 @@ export default function SmoothLine() {
       <Tooltip />
       <Area
         type="monotone"
-        dataKey="uv"
-        stackId="1"
-        stroke="#8884d8"
-        fill="#8884d8"
-      />
-      <Area
-        type="monotone"
         dataKey="pv"
         stackId="1"
-        stroke="#82ca9d"
-        fill="#82ca9d"
+        stroke="#147AD6"
+        fill="#147AD6"
       />
       <Area
         type="monotone"
         dataKey="amt"
         stackId="1"
-        stroke="#ffc658"
-        fill="#ffc658"
+        stroke="#79D2DE"
+        fill="#79D2DE"
       />
     </AreaChart>
+    <div className="center text-[16px] text-[#7C828A]">
+      <span className="text-[#79D2DE]">•</span>Point 01
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span className="text-[#147AD6]">•</span>Point 02
+    </div>
+    </>
   );
 }
