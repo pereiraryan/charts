@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const data = [
   { name: "76 %", value: 70 },
@@ -89,19 +91,59 @@ export default function Circle() {
   );
 
   return (
-    <PieChart width={200} height={200}>
-      <Pie
-        activeIndex={activeIndex}
-        activeShape={renderActiveShape}
-        data={data}
-        cx={100}
-        cy={100}
-        innerRadius={30}
-        outerRadius={40}
-        fill="#147AD6"
-        dataKey="value"
-        onMouseEnter={onPieEnter}
-      />
-    </PieChart>
+    <CarouselProvider
+    naturalSlideWidth={100}
+    naturalSlideHeight={120}
+    totalSlides={3}
+   >
+
+   <Slider>
+     <Slide index={0}>      <PieChart width={200} height={200}>
+        <Pie
+          activeIndex={activeIndex}
+          activeShape={renderActiveShape}
+          data={data}
+          cx={100}
+          cy={100}
+          innerRadius={30}
+          outerRadius={40}
+          fill="#147AD6"
+          dataKey="value"
+          onMouseEnter={onPieEnter}
+        />
+      </PieChart></Slide>
+     <Slide index={1}>      <PieChart width={200} height={200}>
+        <Pie
+          activeIndex={activeIndex}
+          activeShape={renderActiveShape}
+          data={data}
+          cx={100}
+          cy={100}
+          innerRadius={30}
+          outerRadius={40}
+          fill="#147AD6"
+          dataKey="value"
+          onMouseEnter={onPieEnter}
+        />
+      </PieChart></Slide>
+     <Slide index={2}>      <PieChart width={200} height={200}>
+        <Pie
+          activeIndex={activeIndex}
+          activeShape={renderActiveShape}
+          data={data}
+          cx={100}
+          cy={100}
+          innerRadius={30}
+          outerRadius={40}
+          fill="#147AD6"
+          dataKey="value"
+          onMouseEnter={onPieEnter}
+        />
+      </PieChart></Slide>
+   </Slider>
+
+   <ButtonBack><span className="text-[#147AD6]">•</span></ButtonBack>
+   <ButtonNext><span className="text-[#7388A95A]">•</span></ButtonNext>
+  </CarouselProvider>
   );
 }

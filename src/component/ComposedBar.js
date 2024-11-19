@@ -74,7 +74,7 @@ export default function ComposedBar() {
       <Tooltip />
       <Legend />
       <Bar dataKey="pv" barSize={20} fill="#F5F6FA" />
-      <Line type="monotone" dataKey="uv" stroke="#ff7300" />
+      <Line type="monotone" dataKey="uv" stroke="#147AD6" />
     </ComposedChart>
   );
 }
